@@ -1,0 +1,164 @@
+.c-acerca-de{
+    border-color: #302B6E;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    background-color: #EEEEFF;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 12.5px;
+}
+
+.te{
+    display: flex; 
+    align-items: center;
+}
+
+#fotodeperfil{
+    border-radius: 100%;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.nombre{
+    font-weight: bold;
+}
+
+#titulo{
+    color: #505050;
+    font-weight: bold;
+    padding-bottom: 6.25px;
+}
+
+.descripcion > p{
+    white-space: pre-wrap;
+}
+
+.descripcion > div button {
+    margin: 0px 0px 0px 15px;
+}
+
+.te > button:hover, .editImg > button:hover {
+    background-color: #2f2b6ec2; 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.te > button:active, .editImg > button:active {
+    background-color: #302B6E; 
+}
+
+.img{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    border-radius: 100%;
+}
+
+.editImg{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8.75px;
+    align-self: center;
+}
+
+h2, p{
+    margin: 0px;
+}
+
+.te > button{
+    background-color: #2f2b6e52;  
+    color: white;
+    border-radius: 100%;
+    border: 0px;
+    width: 37.5px;
+    height: 37.5px;
+    min-height: 37.5px;
+    min-width: 37.5px;
+    align-self: start;
+}
+
+.editImg > button{
+    background-color: #2f2b6e52;  
+    color: white;
+    border-radius: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 35px;
+    height: 35px;
+    margin: 2.5px;
+    font-size: 0.9rem;
+}
+
+.modal-content{
+    box-shadow: 0px 0px 25px 0px rgb(0 0 0 / 20%);
+}
+
+.form-group:first-child {
+    margin-top: 0px;
+}
+
+.form-group{
+    margin-top:20px;
+}
+
+textarea {
+    resize: none;
+}
+
+@media (max-width: 991px){
+    .acerca-de{
+        display: block;
+    }
+
+    .c-acerca-de{
+        margin-bottom: 6.25px;
+    }
+    
+    #fotodeperfil{
+        width: 180px;
+        margin-top: -100px;
+    }
+    
+    .nombre{
+        font-size: 2.3rem;
+    }
+    
+    .descripcion{
+        width: 100%;
+    }
+
+    .descripcion > div h2{
+        text-align: center;
+    }
+
+    .te{
+        padding-top: 12.5px;
+    }
+}
+  
+@media (min-width: 992px){
+    .acerca-de{
+        display: flex;
+    }
+    
+    .c-acerca-de{
+        margin-bottom: 12.5px;
+    }
+
+    #fotodeperfil{
+        width: 225px;
+        margin-top: -130px;
+    }
+
+    .nombre{
+        font-weight: bold;
+        font-size: 2.5rem;
+    }
+    
+    .descripcion{
+        padding-right: 4%;
+    }
+    
+}
+  

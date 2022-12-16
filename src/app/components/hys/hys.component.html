@@ -1,0 +1,269 @@
+<!-- ****************************** INICIO ****************************** -->
+
+<div class="c-hys">
+    <div>
+        <div class="te">
+            <p class="h2">Hard & Soft Skills</p>
+            <button (click)="openModalCreate()" *ngIf="isLogged">
+                <i class="bi bi-plus"></i></button>
+        </div>
+
+        <div class="seccion">
+            <div class="contenedor" *ngFor="let HyS of hys | filter:'Soft Skills'">
+                <div class="hys" [ngClass]="{'hysIsLogged' : isLogged}">
+                    <p class="h5">{{HyS.skill}}</p>
+                    <div class="edicion" *ngIf="isLogged">
+                        <button (click)="openModalEdit(HyS.id)">
+                            <i class="bi bi-pencil-fill"></i></button>
+                        <button (click)="openModalDelete(HyS.id)">
+                            <i class="bi bi-trash-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion">
+            <div class="titulo">
+                <hr>
+                <div class="showHyS">
+                    <p class="h3">Front End</p>
+                    <button *ngIf="frontEndShow == false" (click)="frontEndShow = true">
+                        <i class="bi bi-caret-down-fill"></i></button>
+                    <button *ngIf="frontEndShow == true" (click)="frontEndShow = false">
+                        <i class="bi bi-caret-up-fill"></i></button>
+                </div>
+                <hr>
+            </div>
+
+            <div *ngIf="frontEndShow == true">
+                <div class="contenedor" *ngFor="let HyS of hys | filter:'Front End'">
+                    <div class="hys" [ngClass]="{'hysIsLogged' : isLogged}">
+                        <p class="h4">{{HyS.skill}}</p>
+                        <div class="edicion" *ngIf="isLogged">
+                            <button (click)="openModalEdit(HyS.id)">
+                                <i class="bi bi-pencil-fill"></i></button>
+                            <button (click)="openModalDelete(HyS.id)">
+                                <i class="bi bi-trash-fill"></i></button>
+                        </div>
+                        <div>
+                            <div [ngClass]="HyS.nivel >= 1 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 2 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 3 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 4 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 5 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion">
+            <div class="titulo">
+                <hr>
+                <div class="showHyS">
+                    <p class="h3">Back End</p>
+                    <button *ngIf="backEndShow == false" (click)="backEndShow = true">
+                        <i class="bi bi-caret-down-fill"></i></button>
+                    <button *ngIf="backEndShow == true" (click)="backEndShow = false">
+                        <i class="bi bi-caret-up-fill"></i></button>
+                </div>
+                <hr>
+            </div>
+
+            <div *ngIf="backEndShow == true">
+                <div class="contenedor" *ngFor="let HyS of hys | filter:'Back End'">
+                    <div class="hys" [ngClass]="{'hysIsLogged' : isLogged}">
+                        <p class="h4">{{HyS.skill}}</p>
+                        <div class="edicion" *ngIf="isLogged">
+                            <button (click)="openModalEdit(HyS.id)">
+                                <i class="bi bi-pencil-fill"></i></button>
+                            <button (click)="openModalDelete(HyS.id)">
+                                <i class="bi bi-trash-fill"></i></button>
+                        </div>
+                        <div>
+                            <div [ngClass]="HyS.nivel >= 1 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 2 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 3 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 4 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 5 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="titulo">
+                <hr>
+                <div class="showHyS">
+                    <p class="h3">Tools</p>
+                    <button *ngIf="toolsShow == false" (click)="toolsShow = true">
+                        <i class="bi bi-caret-down-fill"></i></button>
+                    <button *ngIf="toolsShow == true" (click)="toolsShow = false">
+                        <i class="bi bi-caret-up-fill"></i></button>
+                </div>
+                <hr>
+            </div>
+
+            <div *ngIf="toolsShow == true">
+                <div class="contenedor" *ngFor="let HyS of hys | filter:'Tools'">
+                    <div class="hys" [ngClass]="{'hysIsLogged' : isLogged}">
+                        <p class="h4">{{HyS.skill}}</p>
+                        <div class="edicion" *ngIf="isLogged">
+                            <button (click)="openModalEdit(HyS.id)">
+                                <i class="bi bi-pencil-fill"></i></button>
+                            <button (click)="openModalDelete(HyS.id)">
+                                <i class="bi bi-trash-fill"></i></button>
+                        </div>
+                        <div>
+                            <div [ngClass]="HyS.nivel >= 1 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 2 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 3 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 4 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                            <div [ngClass]="HyS.nivel >= 5 ? 'nivel esIgual' : 'nivel noEsIgual'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ****************************** CREAR ****************************** -->
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreate}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+                <div class="modal-header border-0">
+                    <p class="h3 modal-title">Crear</p>
+                    <button type="button" class="btn-close" (click)="onCloseModalCreate()"></button>
+                </div>
+
+                <div class="modal-body py-0">
+                    <div class="form-group">
+                        <label for="seccion">Sección</label>
+                        <select class="form-select" type="text" id="seccionHySC" name="seccion" [(ngModel)]="seccion"
+                            required>
+                            <option value="Soft Skills">Soft Skills</option>
+                            <option value="Front End">Front End</option>
+                            <option value="Back End">Back End</option>
+                            <option value="Tools">Tools</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill">Skill</label>
+                        <input type="text" class="form-control" [ngClass]="!skill ? 'is-invalid' : ''" maxlength="255"
+                            id="skillHySC" name="skill" [(ngModel)]="skill" required>
+                    </div>
+
+                    <div *ngIf="seccion == 'Front End' || seccion == 'Back End' || seccion == 'Tools'"
+                        class="form-group">
+                        <label for="nivel">Nivel</label>
+                        <select class="form-select" type="number" id="nivelHySC" name="nivel" [(ngModel)]="nivel"
+                            required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="onCloseModalCreate()">Cancelar</button>
+                    <button [disabled]="seccion != 'Soft Skills' ? !nivel || !skill : !skill" type="submit"
+                        class="btn btn-primary">Confirmar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- ****************************** EDITAR ****************************** -->
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayEdit}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="hysE">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+
+                <div class="modal-header border-0">
+                    <p class="h3 modal-title">Editar</p>
+                    <button type="button" class="btn-close" (click)="onCloseModalEdit()"></button>
+                </div>
+
+                <div class="modal-body py-0">
+                    <div class="form-group">
+                        <label for="seccion">Sección</label>
+                        <select class="form-select" type="text" id="seccionHySE" name="seccion"
+                            [(ngModel)]="hysE.seccion" required>
+                            <option value="Soft Skills">Soft Skills</option>
+                            <option value="Front End">Front End</option>
+                            <option value="Back End">Back End</option>
+                            <option value="Tools">Tools</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill">Skill</label>
+                        <input type="text" class="form-control" [ngClass]="!hysE.skill ? 'is-invalid' : ''"
+                            maxlength="255" id="skillHySE" name="skill" [(ngModel)]="hysE.skill" required>
+                    </div>
+
+                    <div *ngIf="hysE.seccion == 'Front End' || hysE.seccion == 'Back End' || hysE.seccion == 'Tools'"
+                        class="form-group">
+                        <label for="nivel">Nivel</label>
+                        <select class="form-select" type="number" id="nivelHySE" name="nivel" [(ngModel)]="hysE.nivel"
+                            required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="onCloseModalEdit()">Cancelar</button>
+                    <button [disabled]="hysE.seccion != 'Soft Skills' ? !hysE.nivel || !hysE.skill : !hysE.skill"
+                        type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- ****************************** ELIMINAR ****************************** -->
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDelete}">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <p class="h3 modal-title">Eliminar</p>
+                <button type="button" class="btn-close" (click)="onCloseModalDelete()"></button>
+            </div>
+
+            <div class="modal-body py-0">
+                <p>¿Desea eliminar el registro?</p>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="onCloseModalDelete()">Cancelar</button>
+                <button type="button" class="btn btn-danger" (click)="onDelete()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

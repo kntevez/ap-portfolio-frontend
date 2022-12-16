@@ -1,0 +1,36 @@
+.bg-custom{
+    background-color: #302B6E;
+}
+
+.ct-custom{
+    color: #302B6E;
+}
+
+#logoAP{
+    width: 105px;
+}
+
+
+img{
+    width: 40px;
+}
+
+a {
+    text-decoration: none;
+  }
+
+.modal-content{
+    box-shadow: 0px 0px 40px 10px rgb(0 0 0 / 20%);
+}
+
+.form-group, #logginFail{
+    margin-top:20px;
+}
+
+.form-group:first-child {
+    margin-top: 0px;
+}
+
+.navbar{
+    padding: 20px;
+}

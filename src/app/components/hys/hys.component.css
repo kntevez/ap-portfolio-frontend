@@ -1,0 +1,232 @@
+.c-hys{
+    padding: 12.5px;
+    border-color: #302B6E;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #EEEEFF;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.te{
+    display: flex;
+    align-items: center;
+    margin-bottom: 12.5px;
+}
+
+.contenedor{
+    display: inline-block;
+    justify-content: center;
+}
+
+.hys{
+    min-width: 100px;
+    position: relative;
+    text-align: center;
+    border: 1px solid hsla(244, 44%, 30%, 0.25);
+    background-color: #2f2b6e10;
+    border-radius: 15px;
+}
+
+.seccion{
+    padding-bottom: 25px; 
+}
+
+.titulo{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 6.25px;
+}
+
+.edicion{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+
+.nivel {
+    border-radius: 25%;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+.noEsIgual {
+    background-color: #bbb;
+}
+
+.esIgual {
+    background-color: #302B6E;
+}
+
+.showHyS > .h3{
+    color: #707070;
+}
+
+p, h2, h3, h4, h5 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.edicion > button, .te > button, .showHyS > button{
+    background-color: #2f2b6e52;  
+    color: white;
+    border-radius: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+hr{
+    margin: 0% 5%;
+    border: 0.1% solid #302B6E; 
+}
+
+.edicion > button{
+    width: 35px;
+    height: 35px;
+    margin: 2.5px;
+    font-size: 0.9rem;
+}
+
+.showHyS{
+    display: flex;
+    align-items: center;
+}
+
+.showHyS > button{
+    width: 35px;
+    height: 35px;
+}
+
+.te > button {
+    margin: 0px 0px 0px 10px;
+    width: 37.5px;
+    height: 37.5px;
+    font-size: 2rem;
+    min-height: 37.5px;
+    min-width: 37.5px;
+    display: flex;
+    align-self: start;
+    align-items: center;
+    justify-content: center;
+}
+
+i.bi.bi-plus{
+    height: 32px;
+}
+
+.bi-plus::before {
+    vertical-align: super;
+    padding: 0px;
+    margin: 0px;
+}
+
+.bi-caret-down-fill::before, .bi-caret-up-fill::before {
+    padding: 0px;
+    margin: 0px;
+}
+
+.hysIsLogged:hover{
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.hysIsLogged:hover > .edicion{
+    display: inline-flex; 
+}
+
+.hysIsLogged:hover > .h4, .hysIsLogged:hover > .h5{
+    color: hsla(0, 0%, 0%, 0.050); 
+}
+
+.hysIsLogged:hover > div .noEsIgual {
+    background-color: hsla(0, 0%, 73%, 0.050);
+}
+
+.hysIsLogged:hover > div .esIgual {
+    background-color: hsla(244, 44%, 30%, 0.050);
+}
+
+.edicion > button:hover, .te > button:hover, .showHyS > button:hover{
+    background-color: #2f2b6ec2; 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.edicion > button:active, .te > button:active, .showHyS > button:active {
+    background-color: #302B6E; 
+}
+
+.modal-content{
+    box-shadow: 0px 0px 25px 0px rgb(0 0 0 / 20%);
+}
+
+.form-group:first-child {
+    margin-top: 0px;
+}
+
+.form-group{
+    margin-top:20px;
+}
+
+textarea {
+    resize: none;
+}
+
+@media (max-width: 991px){
+
+    .c-hys{
+        margin-bottom: 6.25px;
+    }
+
+    hr{
+        width: 15%; 
+    }
+    
+
+    .nivel {
+        height: 13px;
+        width: 22px;
+    }
+    
+    .hys{
+        padding: 8px 17px;
+        margin: 2.5px;
+    }
+
+    .showHyS > button{
+        margin-left: 10px;
+    }
+
+}
+  
+@media (min-width: 992px){
+    
+    .c-hys{
+        margin-bottom: 12.5px;
+    }
+
+    hr{
+        width: 30%;
+        margin: 0% 5%;
+        border: 0.1% solid #302B6E; 
+    }
+
+    .nivel {
+        height: 15px;
+        width: 25px;
+    }
+
+    .hys{
+        padding: 12.5px 25px;
+        margin: 5px;
+    }
+
+    .showHyS > button{
+        margin-left: 20px;
+    }
+
+}

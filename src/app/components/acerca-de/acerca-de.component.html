@@ -1,0 +1,90 @@
+<div class="c-acerca-de">
+
+    <div class="acerca-de" *ngFor="let AcercaDe of acercaDe">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+            <img src="{{AcercaDe.foto}}" id="fotodeperfil">
+            <div class="mx-4">
+                <p class="nombre">{{AcercaDe.nombre}}</p>
+                <p class="h4" id="titulo">{{AcercaDe.titulo}}</p>
+            </div>
+        </div>
+
+        <div class="descripcion">
+            <div class="te">
+                <p class="h2">Acerca de mí</p>
+                <button *ngIf="isLogged" (click)="openModalEdit(AcercaDe.id)">
+                    <i class="bi bi-pencil-fill"></i></button>
+            </div>
+            <p>{{AcercaDe.descripcion}}</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayEdit}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="acercaDeE">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                
+                <div class="modal-header border-0">
+                    <p class="h3 modal-title">Editar</p>
+                    <button type="button" class="btn-close" (click)="onCloseModalEdit()"></button>
+                </div>
+
+                    <div class="modal-body py-0">
+                        <div class="form-group">
+                            <label for="img">Foto</label>
+    
+                            <input type="file" class="form-control" id="imgE" name="img" style="display: none;"
+                                [ngClass]="!acercaDeE.foto ? 'is-invalid' : ''" (change)="uploadImage($event)"
+                                accept=".jpg, .jpeg, .png" required>
+    
+                            <div class="img">
+                                <img *ngIf="img && !changeImg" [src]="acercaDeE.foto" width="100" height="100">
+                                <img *ngIf="!img" src="../../../assets/fotoEmpty.png" width="100" height="100">
+                                <img *ngIf="changeImg && img" [src]="previsualizacion" width="100" height="100">
+    
+                                <div class="editImg">
+                                    <button type="button" onclick="document.getElementById('imgE').click()">
+                                        <i class="bi bi-pencil-fill"></i></button>
+                                    <button *ngIf="img" (click)="img = false">
+                                        <i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo</label>
+                        <input type="text" class="form-control" id="nombreE" name="nombre"
+                            [ngClass]="!acercaDeE.nombre ? 'is-invalid' : ''" [(ngModel)]="acercaDeE.nombre"
+                            maxlength="255" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input type="text" class="form-control" id="tituloE" name="titulo"
+                            [ngClass]="!acercaDeE.titulo ? 'is-invalid' : ''" [(ngModel)]="acercaDeE.titulo"
+                            maxlength="255" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea type="text" class="form-control" id="descripcionE" name="descripcion" rows="4"
+                            [ngClass]="!acercaDeE.descripcion ? 'is-invalid' : ''" [(ngModel)]="acercaDeE.descripcion"
+                            maxlength="1275" required></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="onCloseModalEdit()">Cancelar</button>
+                    <button
+                        [disabled]="!acercaDeE.nombre || !acercaDeE.titulo || !acercaDeE.descripcion"
+                        type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>

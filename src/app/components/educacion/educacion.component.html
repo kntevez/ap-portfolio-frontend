@@ -1,0 +1,265 @@
+<!-- ****************************** INICIO ****************************** -->
+
+<div class="c-educacion">
+
+    <div class="tefo">
+        <div class="te">
+            <p class="h2">Educación</p>
+            <button (click)="openModalCreate()" *ngIf="isLogged">
+                <i class="bi bi-plus"></i></button>
+        </div>
+
+        <div class="flo">
+            <button class="fo" (click)="order()">
+                <p class="fecha">Fecha:</p>
+                <i *ngIf="orderAsc" class="bi bi-sort-numeric-down"></i>
+                <i *ngIf="!orderAsc" class="bi bi-sort-numeric-up-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <div class="educacion" [ngClass]="{'educacionIsLogged' : isLogged}"
+            *ngFor="let Educacion of educacion; first as isFirst">
+            <div class="edicion" *ngIf="isLogged">
+                <button (click)="openModalEdit(Educacion.id)">
+                    <i class="bi bi-pencil-fill"></i></button>
+                <button (click)="openModalDelete(Educacion.id)">
+                    <i class="bi bi-trash-fill"></i></button>
+            </div>
+
+            <div class="l">
+                <img src="{{Educacion.logo}}">
+            </div>
+
+            <div class="col-7 col-sm-9 col-md-10 col-lg-5 col-xl-5 text-center p-1">
+                <p class="h3">{{Educacion.instituto}}</p>
+                <div class="periodo">
+                    <div *ngIf="Educacion.pHasta === 'Actualidad'; else elseBlock">{{Educacion.pDesde |
+                        slice:5:7}}/{{Educacion.pDesde | slice:0:4}} - Actualidad</div>
+                    <ng-template #elseBlock>{{Educacion.pDesde | slice:5:7}}/{{Educacion.pDesde | slice:0:4}} -
+                        {{Educacion.pHasta | slice:5:7}}/{{Educacion.pHasta | slice:0:4}}</ng-template>
+                </div>
+            </div>
+
+            <div class="ed">
+                <p class="h4">{{Educacion.estudio}}</p>
+                <p class="descripcion">{{Educacion.descripcion}}</p>
+            </div>
+
+            <div *ngIf="!isFirst">
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ****************************** CREAR ****************************** -->
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayCreate}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+
+                <div class="modal-header border-0">
+                    <p class="h3 modal-title">Crear</p>
+                    <button type="button" class="btn-close" (click)="onCloseModalCreate()"></button>
+                </div>
+
+                <div class="modal-body py-0">
+                    <div class="form-group">
+                        <label for="logo">Logo</label>
+
+                        <input type="file" class="form-control" id="logoEduC" name="logo" style="display: none;"
+                            [ngClass]="!logo ? 'is-invalid' : ''" (change)="uploadImage($event)"
+                            accept=".jpg, .jpeg, .png" required>
+
+                        <div class="logo">
+                            <img *ngIf="logo" [src]="previsualizacion" width="100" height="100">
+                            <img *ngIf="!logo" src="../../../assets/logoEmpty.png" width="100" height="100">
+
+                            <div class="editImg">
+                                <button type="button" onclick="document.getElementById('logoEduC').click()">
+                                    <i class="bi bi-pencil-fill"></i></button>
+                                <button *ngIf="logo" (click)="logo = false">
+                                    <i class="bi bi-trash-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="instituto">Instituto</label>
+                        <input type="text" class="form-control" [ngClass]="!instituto ? 'is-invalid' : ''"
+                            maxlength="255" id="institutoEduC" name="instituto" [(ngModel)]="instituto" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="periodo">Periodo</label>
+                        <div class="dh">
+                            <div class="col-6 px-1">
+                                <label for="pDesde"><small>Desde</small></label>
+                                <input type="month" class="form-control"
+                                    [ngClass]="pDesde && dateNow >= pDesde && pDesde > '1900-01' ? '' : 'is-invalid'"
+                                    id="pDesdeEduC" name="pDesde" min="1900-01" [max]="dateNow" [(ngModel)]="pDesde"
+                                    required>
+                            </div>
+
+                            <div class="col-6 px-1">
+                                <div class="ha">
+                                    <label for="pHasta"><small>Hasta</small></label>
+                                    <label><input type="checkbox" [(ngModel)]="actualidad" id="actualidadEduC"
+                                            name="actualidad">Actualidad</label>
+                                </div>
+                                <input [disabled]="actualidad == true" type="month" class="form-control"
+                                    [ngClass]="pHasta && dateNow >= pHasta && pHasta > '1900-01' ? '' : actualidad == true ? '' : 'is-invalid'"
+                                    id="pHastaEduC" name="pHasta" min="1900-01" [max]="dateNow" [(ngModel)]="pHasta"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="puesto">Estudio</label>
+                        <input type="text" class="form-control" [ngClass]="!estudio ? 'is-invalid' : ''" maxlength="255"
+                            id="estudioEduC" name="estudio" [(ngModel)]="estudio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea type="text" class="form-control" [ngClass]="!descripcion ? 'is-invalid' : ''"
+                            maxlength="510" id="descripcionEduC" name="descripcion" rows="4" [(ngModel)]="descripcion"
+                            required></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="onCloseModalCreate()">Cancelar</button>
+                    <button
+                        [disabled]="!instituto || !pDesde || !pHasta && !actualidad || pHasta > dateNow && !actualidad || '1900-01' > pHasta && !actualidad || pDesde > dateNow || '1900-01' > pDesde || !estudio || !descripcion"
+                        type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- ****************************** EDITAR ****************************** -->
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayEdit}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngIf="educacionE">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+
+                <div class="modal-header border-0">
+                    <p class="h3 modal-title">Editar</p>
+                    <button type="button" class="btn-close" (click)="onCloseModalEdit()"></button>
+                </div>
+
+                <div class="modal-body py-0">
+                    <div class="form-group">
+                        <label for="logo">Logo</label>
+
+                        <input type="file" class="form-control" id="logoEduE" name="logo" style="display: none;"
+                            [ngClass]="!logo ? 'is-invalid' : ''" (change)="uploadImage($event)"
+                            accept=".jpg, .jpeg, .png" required>
+
+                        <div class="logo">
+                            <img *ngIf="logo && !changeImg" [src]="educacionE.logo" width="100" height="100">
+                            <img *ngIf="!logo" src="../../../assets/logoEmpty.png" width="100" height="100">
+                            <img *ngIf="changeImg && logo" [src]="previsualizacion" width="100" height="100">
+
+                            <div class="editImg">
+                                <button type="button" onclick="document.getElementById('logoEduE').click()">
+                                    <i class="bi bi-pencil-fill"></i></button>
+                                <button *ngIf="logo" (click)="logo = false; changeImg = false;">
+                                    <i class="bi bi-trash-fill"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="instituto">Instituto</label>
+                        <input type="text" class="form-control" [ngClass]="!educacionE.instituto ? 'is-invalid' : ''"
+                            maxlength="255" id="institutoEduE" name="instituto" [(ngModel)]="educacionE.instituto"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="periodo">Periodo</label>
+                        <div class="dh">
+                            <div class="col-6 px-1">
+                                <label for="pDesde"><small>Desde</small></label>
+                                <input type="month" class="form-control"
+                                    [ngClass]="educacionE.pDesde && dateNow >= educacionE.pDesde && educacionE.pDesde > '1900-01' ? '' : 'is-invalid'"
+                                    id="pDesdeEduE" name="pDesde" min="1900-01" [max]="dateNow"
+                                    [(ngModel)]="educacionE.pDesde" required>
+                            </div>
+
+                            <div class="col-6 px-1">
+                                <div class="ha">
+                                    <label for="pHasta"><small>Hasta</small></label>
+                                    <label><input type="checkbox" [(ngModel)]="actualidad" id="actualidadEduE"
+                                            name="actualidad">Actualidad</label>
+                                </div>
+                                <input [disabled]="actualidad == true" type="month" class="form-control"
+                                    [ngClass]="educacionE.pHasta && dateNow >= educacionE.pHasta && educacionE.pHasta > '1900-01' ? '' : actualidad == true ? '' : 'is-invalid'"
+                                    id="pHastaEduE" name="pHasta" min="1900-01" [max]="dateNow"
+                                    [(ngModel)]="educacionE.pHasta" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="puesto">Estudio</label>
+                        <input type="text" class="form-control" [ngClass]="!educacionE.estudio ? 'is-invalid' : ''"
+                            maxlength="255" id="estudioEduE" name="estudio" [(ngModel)]="educacionE.estudio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea type="text" class="form-control"
+                            [ngClass]="!educacionE.descripcion ? 'is-invalid' : ''" maxlength="510" id="descripcionEduE"
+                            name="descripcion" rows="4" [(ngModel)]="educacionE.descripcion" required></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        (click)="onCloseModalEdit()">Cancelar</button>
+                    <button
+                        [disabled]="!educacionE.instituto || !educacionE.pDesde || !educacionE.pHasta && !actualidad || educacionE.pHasta > dateNow && !actualidad || '1900-01' > educacionE.pHasta && !actualidad || educacionE.pDesde > dateNow || '1900-01' > educacionE.pDesde || !educacionE.estudio || !educacionE.descripcion"
+                        type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- ****************************** ELIMINAR ****************************** -->
+
+<div class="modal modal-dialog-centered" tabindex="-1" role="dialog" [ngStyle]="{'display':displayDelete}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <p class="h3 modal-title">Eliminar</p>
+                <button type="button" class="btn-close" (click)="onCloseModalDelete()"></button>
+            </div>
+
+            <div class="modal-body py-0">
+                <p>¿Desea eliminar el registro?</p>
+            </div>
+
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    (click)="onCloseModalDelete()">Cancelar</button>
+                <button type="button" class="btn btn-danger" (click)="onDelete()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

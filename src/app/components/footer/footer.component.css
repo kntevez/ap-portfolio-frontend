@@ -1,0 +1,13 @@
+footer{
+    color: #fefefe;
+    background-color: hsla(244, 44%, 30%, 0.75);
+    padding: 12.5px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+p{
+    margin: 5px;
+}

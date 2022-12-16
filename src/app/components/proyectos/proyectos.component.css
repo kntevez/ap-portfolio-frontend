@@ -1,0 +1,270 @@
+.c-proyectos{
+    padding: 12.5px;
+    border-color: #302B6E;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #EEEEFF;
+    border-radius: 25px;
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.proyecto{
+    display: grid;
+    padding: 12.5px 25px;
+    border: 1px solid hsla(244, 44%, 30%, 0.25);
+    background-color: #2f2b6e10;
+    border-radius: 15px;
+}
+
+.tefo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.fo{
+    display: flex;
+    align-items: center;
+    background-color: #2f2b6e52;  
+    color: white;
+    border-radius: 20px;
+    border: 0px;
+    padding: 0px 20px;
+    margin: 0px;
+    height: 32.5px;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.fo > i{
+    font-size: 21px;
+}
+
+
+.te{
+    display: flex;
+    align-items: center;
+}
+
+.fecha{
+    margin-right: 5px;
+}
+
+.edicion{
+    display: none; 
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.captura{
+    display: flex;
+    justify-content: center;
+}
+
+.captura > img{
+    max-width: 400px;
+}
+.editImg{
+    display: flex;
+    flex-direction: column;
+    margin-left: 8.75px;
+    align-self: center;
+}
+
+.nc{
+    display: flex;
+    justify-content: space-between;
+    min-height: 35px;
+}
+
+.ne{
+    display: flex;
+}
+
+.cl{
+    display: flex;
+}
+
+.ll{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.i{
+    display: block;
+    justify-self: center;
+    text-align: center;
+}
+
+.linkGitHub{
+    background-color: #2f2b6e52;  
+    color: white;
+    display: flex;
+    font-size: 24px;
+    min-height: 35px;
+    min-width: 35px;
+    max-height: 35px;
+    max-width: 35px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+
+.imgProyecto{
+    border-radius: 15px;
+    max-height: 270px;
+    width: 100%;
+    margin: 12.5px 0px;
+}
+
+img{
+    border-radius: 15px;
+}
+
+.creacionTop{
+    justify-content: center;
+    font-size: 0.95em;
+    color: #707070;
+}
+
+.creacionDefault{
+    margin-right: 10px;
+    align-items: center;
+    font-size: 0.95em;
+    color: #707070;
+}
+
+.lenguajes{
+    font-weight: bold;
+    color: #707070;
+}
+
+.descripcion{
+    margin-top: 6.25px;
+    white-space: pre-wrap;
+}
+
+p, h2, h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.te > button, .edicion > button, .editImg > button{
+    background-color: #2f2b6e52;  
+    color: white;
+    border-radius: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.te > button {
+    margin: 0px 0px 0px 10px;
+    width: 37.5px;
+    height: 37.5px;
+    font-size: 2rem;
+    min-height: 37.5px;
+    min-width: 37.5px;
+    display: flex;
+    align-self: start;
+    align-items: center;
+    justify-content: center;
+}
+
+i.bi.bi-plus{
+    height: 32px;
+}
+
+.bi-plus::before {
+    vertical-align: super;
+    padding: 0px;
+    margin: 0px;
+}
+
+.edicion > button{
+    width: 35px;
+    height: 35px;
+    margin: 0px 2.5px;
+    font-size: 0.9em;
+}
+
+.editImg > button{
+    width: 35px;
+    height: 35px;
+    margin: 2.5px;
+    font-size: 0.9rem;
+}
+.hysIsLogged:hover{
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.hysIsLogged:hover > div .edicion{
+    display: inline-flex;
+}
+
+.fo:hover, .te > button:hover, .edicion > button:hover, .linkGitHub:hover, .editImg > button:hover {
+    background-color: #2f2b6ec2; 
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.1);
+}
+
+.fo:active, .te > button:active, .edicion > button:active, .editImg > button:active {
+    background-color: #302B6E; 
+}
+
+.modal-content{
+    box-shadow: 0px 0px 25px 0px rgb(0 0 0 / 20%);
+}
+
+.form-group:first-child {
+    margin-top: 0px;
+}
+
+.form-group{
+    margin-top:20px;
+}
+
+textarea {
+    resize: none;
+}
+
+@media (max-width: 991px){
+
+    .proyecto{
+        width: 100%;
+        margin: 2.5px 5px;
+    }
+
+    .creacionDefault{
+        display: none;
+    }
+    
+    .creacionTop{
+        display: flex;
+    }
+    
+}
+  
+@media (min-width: 992px){
+
+    .proyecto{
+        width: 49.5%;
+        margin: 0.25%;
+    }
+
+    .creacionDefault{
+        display: flex;
+    }
+    
+    .creacionTop{
+        display: none;
+    }
+
+}
